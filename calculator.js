@@ -85,7 +85,7 @@ const schema = {
     operation: {
       description: 'Enter operation',
       type: 'string',
-      message: 'Please enter a number',
+      message: 'Please enter an operation',
       required: true
     }
   }
@@ -95,21 +95,6 @@ console.log(`Welcome to the Calculator!`);
 console.log(`Enter two numbers and an operation.`);
 console.log(`Valid operations are: add (+), subtract (-), multiply (*), divide (/), exponent (^) and modulo (%).`);
 prompt.get(schema, calculateUserInput);
-
-
-// {
-//   description: 'Enter your password',     // Prompt displayed to the user. If not supplied name will be used.
-//   type: 'string',                 // Specify the type of input to expect.
-//   pattern: /^\w+$/,                  // Regular expression that input must be valid against.
-//   pattern: /^[0-9]+$/,
-//   message: 'Password must be letters', // Warning message to display if validation fails.
-//   hidden: true,                        // If true, characters entered will either not be output to console or will be outputed using the `replace` string.
-//   replace: '*',                        // If `hidden` is set it will replace each hidden character with the specified string.
-//   default: 'lamepassword',             // Default value to use if no value is entered.
-//   required: true                        // If true, value entered must be non-empty.
-//   before: function(value) { return 'v' + value; } // Runs before node-prompt callbacks. It modifies user's input
-// }
-
 
 // Questions to ask and answer:
 // What is promptInput? It's the Object where prompt.get sends the results of what you typed
