@@ -48,7 +48,6 @@ const calculate = function(userInput) {
 
 }
 
-// 
 // const calculateUserInput = function(error, promptInput) {
 //   calculate(promptInput);
 //   console.log(`\nThanks for using the calculator!`);
