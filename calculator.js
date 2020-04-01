@@ -45,7 +45,7 @@ const calculate = function(userInput) {
       break;
     case `exponent`:
     case `^`:
-      result = first ^ second;
+      result = Math.pow(first, second);
       console.log(`${first} ^ ${second} = ${result}`);
       break;
     case `modulo`:
