@@ -55,27 +55,41 @@ const calculate = function(userInput) {
 // }  
 // prompt.get(['num1','num2','operation'], calculateUserInput);
 
-// Questions to ask and answer:
-// What is promptInput? It's the Object where prompt.get sends the results of what you typed
-  // What data type? It's an Object
-  // What does it hold? The three inputs that we asked
-  // What does it represent? The user input for the calculations
-// How do we read values from it? What syntax? Using promptInput.inputname
-// How can we use it? We can just pass the proptInput to the our calculate function
-// Can we call our existing functions now, inside of this function? yes, of course.
-
 // Function for testing
 const getRandom = function(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-const testNumber    = [0, 1, 2, 3, 100, 200, -10, -99, 0, 0.1, -0.2, null, "1", "0", "10101", "abc", "$", "%", " ", "", "."];
-const testOperation = ["+", "-", "*", "/", "add", "subtract", "multiply", "divide", ",", ".", null, " ", "", 1, 0];
-for (let i = 1; i <= 10; i++) {
+const validNumber      = [0, 1, 2, 3, 100, 200, -10, -99, 0, 0.1, -0.2, "1", "0", "10101", " ", "",true];
+const validOperation   = ["+", "-", "*", "/", "add", "subtract", "multiply", "divide"];
+const invalidNumber    = ["Hello", "2005/12/12", undefined, "NaN", NaN, "abc", "$", "%", "."];
+const invalidOperation = [".", ",", null, " ", "", 1, 0];
+
+for (let i = 1; i <= 4; i++) {
   let testData = {
-    num1: getRandom(testNumber),
-    num2: getRandom(testNumber),
-    operation: getRandom(testOperation)
+    num1: getRandom(validNumber),
+    num2: getRandom(validNumber),
+    operation: getRandom(validOperation)
+  }
+  console.log(`\nTest ${i}: ${testData.num1} ${testData.operation} ${testData.num2}`);
+  calculate(testData);
+}
+
+for (let i = 1; i <= 4; i++) {
+  let testData = {
+    num1: getRandom(validNumber),
+    num2: getRandom(validNumber),
+    operation: getRandom(invalidOperation)
+  }
+  console.log(`\nTest ${i}: ${testData.num1}, ${testData.operation}, ${testData.num2}`);
+  calculate(testData);
+}
+
+for (let i = 1; i <= 4; i++) {
+  let testData = {
+    num1: getRandom(invalidNumber),
+    num2: getRandom(validNumber),
+    operation: getRandom(validOperation)
   }
   console.log(`\nTest ${i}: ${testData.num1}, ${testData.operation}, ${testData.num2}`);
   calculate(testData);
