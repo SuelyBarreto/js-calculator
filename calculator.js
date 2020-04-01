@@ -16,44 +16,59 @@ const calculate = function(userInput) {
   let first  = checkInteger(userInput.num1);
   let second = checkInteger(userInput.num2);
   let operation = userInput.operation;
+  let result    = 0;
   // Process Each Operation
   switch (operation) {
     case `add`:
     case `+`:
-      let addition = first + second;
-      console.log(`${first} + ${second} = ${addition}`);
+      result = first + second;
+      console.log(`${first} + ${second} = ${result}`);
       break;
     case `subtract`:
     case `-`:
-      let subtraction = first - second;
-      console.log(`${first} - ${second} = ${subtraction}`);
+      result = first - second;
+      console.log(`${first} - ${second} = ${result}`);
       break;
     case `multiply`:
     case `*`:
-      let multiplication = first * second;
-      console.log(`${first} * ${second} = ${multiplication}`);
+      result = first * second;
+      console.log(`${first} * ${second} = ${result}`);
       break;
     case `divide`:
     case `/`:
       if (second === 0) {
         console.log( `Not a valid operation. Can't divide by zero (0).`);
       } else {
-        let division = first / second;
-        console.log( `${first} / ${second} = ${division}`); 
+        result = first / second;
+        console.log( `${first} / ${second} = ${result}`); 
+      }
+      break;
+    case `exponent`:
+    case `^`:
+      result = first ^ second;
+      console.log(`${first} ^ ${second} = ${result}`);
+      break;
+    case `modulo`:
+    case `%`:
+      if (second === 0) {
+        console.log( `Not a valid operation. Can't divide by zero (0).`);
+      } else {
+        result = first % second;
+        console.log( `${first} % ${second} = ${result}`); 
       }
       break;
     default:
       console.log( `"${operation}" is not a valid operation.`);
   } // end switch (operation)
 
-}
+} // end const calculate
 
-// 
-// const calculateUserInput = function(error, promptInput) {
-//   calculate(promptInput);
-//   console.log(`\nThanks for using the calculator!`);
-// }  
-// prompt.get(['num1','num2','operation'], calculateUserInput);
+const calculateUserInput = function(error, promptInput) {
+  calculate(promptInput);
+  console.log(`\nThanks for using the calculator!`);
+}  
+prompt.get(['num1','num2','operation'], calculateUserInput);
+
 
 // Questions to ask and answer:
 // What is promptInput? It's the Object where prompt.get sends the results of what you typed
@@ -63,20 +78,3 @@ const calculate = function(userInput) {
 // How do we read values from it? What syntax? Using promptInput.inputname
 // How can we use it? We can just pass the proptInput to the our calculate function
 // Can we call our existing functions now, inside of this function? yes, of course.
-
-// Function for testing
-const getRandom = function(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
-const testNumber    = [0, 1, 2, 3, 100, 200, -10, -99, 0, 0.1, -0.2, null, "1", "0", "10101", "abc", "$", "%", " ", "", "."];
-const testOperation = ["+", "-", "*", "/", "add", "subtract", "multiply", "divide", ",", ".", null, " ", "", 1, 0];
-for (let i = 1; i <= 10; i++) {
-  let testData = {
-    num1: getRandom(testNumber),
-    num2: getRandom(testNumber),
-    operation: getRandom(testOperation)
-  }
-  console.log(`\nTest ${i}: ${testData.num1}, ${testData.operation}, ${testData.num2}`);
-  calculate(testData);
-}
